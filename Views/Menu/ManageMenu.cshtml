@@ -1,0 +1,53 @@
+﻿@model List<Dish>
+
+@{
+    ViewData["Title"] = "Manage Menu";
+}
+
+<h2>Manage Menu</h2>
+
+@if (Model != null && Model.Any())
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Menu Id</th>
+                <th>Name Of Dish</th>
+                <th>Price</th>                
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var dishes in Model)
+            {
+                <tr>
+                    <td>@dishes.MenuId</td>
+                    <td>@dishes.NameOfDish</td>
+                    <td>@dishes.Price</td>
+                    <td>
+                        <!-- Edit button -->
+                        <form method="get" asp-controller="Menu" asp-action="UpdateDish" style="display:inline;">
+                            <input type="hidden" name="Id" value="@dishes.MenuId" />
+                            <button type="submit" class="btn btn-primary">Edit</button>
+                        </form>
+
+                        <!-- Delete button -->
+                        <form method="post" asp-controller="Menu" asp-action="DeleteDish" style="display:inline-block">
+                            <input type="hidden" name="id" value="@dishes.MenuId" />
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this dish?');">
+                                Delete
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No dishes available.</p>
+}
+
+<!-- Create New dish Button -->
+<a href="@Url.Action("CreateMenuItem", "Menu")" class="btn btn-success">Add new dish</a>

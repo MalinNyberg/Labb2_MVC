@@ -1,0 +1,62 @@
+﻿@model Labb2_MVC.Models.Booking
+
+@{
+    ViewData["Title"] = "Book a Table";
+}
+
+<section class="customer-booking-page">
+    <div class="booking-form-section mx-auto p-4">
+        <h2 class="text-center mb-4">Book a Table</h2>
+
+        <form asp-action="CreateBooking" method="post" class="booking-form">
+            <div class="form-group mb-3">
+                <label asp-for="CustomerName" class="control-label">Customer Name</label>
+                <input asp-for="CustomerName" class="form-control" />
+                <span asp-validation-for="CustomerName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="PhoneNumber" class="control-label">Phone Number</label>
+                <input asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Email" class="control-label">Email</label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Date" class="control-label">Select Date</label>
+                <input asp-for="Date" class="form-control" type="date"
+                       value="@DateTime.Now.ToString("yyyy-MM-dd")"
+                       min="@DateTime.Now.ToString("yyyy-MM-dd")" />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="time">Select Time</label>
+                <input name="time" class="form-control" type="time"
+                       value="@DateTime.Now.ToString("HH:mm")" />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="NumberOfPeople" class="control-label">Guests</label>
+                <input asp-for="NumberOfPeople" class="form-control" type="number" min="1" />
+                <span asp-validation-for="NumberOfPeople" class="text-danger"></span>
+            </div>
+
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-dark btn-block">Book Table</button>
+            </div>
+        </form>
+    </div>
+</section>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

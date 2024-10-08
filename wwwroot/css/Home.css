@@ -1,0 +1,118 @@
+﻿
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+h1, h2, h3, h5 {
+    font-family: 'Zen Tokyo Zoo', cursive; 
+    text-align: center;
+    margin-top:3rem;
+}
+
+/* Home Header Section */
+.home-header-container {
+    position: relative;
+    overflow: hidden;
+}
+
+#home-header-img {
+    width: 100%;
+    height: auto;
+    filter: brightness(70%);
+}
+
+.home-header-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.home-header-text h1 {
+    font-size: 4rem;
+    margin-bottom: 0.5rem;
+}
+
+.home-header-text p {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.btn-outline-light {
+    border: 2px solid #fff;
+    color: #fff;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-outline-light:hover {
+    background-color: #fff;
+    color: #333;
+}
+
+/* Information Cards Section */
+.information-cards {
+    padding: 3rem 1rem;
+}
+
+.card {
+    width: 300px; /* Fixed width for all cards */
+    height: auto; /* Fixed height for all cards */
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    margin-bottom: 5vh;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+.card-title {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.card-text {
+    font-size: 1rem;
+    color: #555;
+}
+
+/* Buttons */
+.btn-dark {
+    background-color: #333;
+    color: #fff;
+    transition: background-color 0.3s;
+}
+
+.btn-dark:hover {
+    background-color: #555;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .home-header-text h1 {
+        font-size: 2.5rem;
+    }
+
+    .home-header-text p {
+        font-size: 1.2rem;
+    }
+}

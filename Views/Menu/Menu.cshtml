@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Labb2_MVC.Models.Dish>
+
+@{
+    ViewData["Title"] = "Menu";
+}
+
+<h2 class="menu-title">Our Menu</h2>
+
+@if (Model != null && Model.Any())
+{
+    <table class="menu-table">
+        <thead>
+            <tr>
+                <th>Dish</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var dishes in Model)
+            {
+                <tr>
+                    <td>@dishes.NameOfDish</td>
+                    <td>@dishes.Price</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p class="menu-unavailable">The menu is not available.</p>
+}

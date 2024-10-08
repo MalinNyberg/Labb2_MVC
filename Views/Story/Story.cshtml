@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Story";
+}
+
+<section class="our-story">
+    <div class="title white">
+        <h2>Our Story</h2>
+    </div>
+    <div class="content">
+        <div class="textbox">
+            <h3>"Where Japanese tradition meets Swedish flair" is more than just a tagline—it's the heart of Momoko's story.</h3>
+            <p class="story-text">
+                Momoko began when a Swedish chef, inspired by a life-changing trip to Japan, fell in love with the harmony, precision, and elegance of Japanese cuisine. During his travels, he crossed paths with a Japanese woman named Momoko, a talented chef with deep roots in her culinary heritage. Their shared passion for food quickly blossomed into more than just a professional partnership — they fell in love.
+            </p>
+            <p class="story-text">
+                After moving back to Sweden together, they dreamed of creating something unique, a restaurant where their love for both food and culture could flourish. They teamed up with other culinary talents, and together, they envisioned a fusion of their backgrounds: blending the simplicity and freshness of Japanese ingredients with the rich, seasonal flavors of Swedish cuisine.
+            </p>
+            <p class="story-text">
+                Their goal was not just to serve food, but to tell their story through each dish, blending the artistry of sushi and ramen with Nordic influences like pickled herring and lingonberries. At Momoko, guests are invited to experience the heartwarming fusion of two worlds, where East meets West, and tradition meets innovation — a reflection of their love story and shared culinary journey.
+            </p>
+            <div class="text-center mt-4">
+                <button type="button" class="btn btn-danger btn-book" onclick="location.href='@Url.Action("CreateBooking", "Booking")'">Book a Table</button>
+            </div>
+        </div>
+        <div class="imgbox" id="imgbox">
+            <img src="/Images/OurStory.jpg" alt="Our Story Image">
+        </div>
+    </div>
+</section>

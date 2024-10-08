@@ -1,0 +1,55 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<section class="home-header-container">
+    <img src="./Images/LandingPageImage.jpg" id="home-header-img" class="img-fluid w-100 p-3"/>
+
+    <div class="home-header-text position-absolute @* top-50 start-50 translate-middle text-center text-white *@">
+        <h1 class="display-4 fw-bold">Momoko</h1>
+        <p class="lead fw-semibold">Where Japanese tradition meets Swedish flair</p>
+        <button type="button" class="btn btn-outline-light" onclick="location.href='@Url.Action("BookATable", "Booking")'">Book a table</button>
+    </div>
+</section>
+
+<main class="container">
+    <section class="information-cards text-center">
+        <div class="container card-section">
+            <div class="row justify-content-center">
+                <div class="col-md-4">
+                    <div class="card" style="width: 100%;">
+                        <img src="./Images/card1.jpg" class="card-img-top" alt="Card Image">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Our Story</h5>
+                            <p class="card-text">Momoko began when a Swedish chef, inspired by a trip to Japan, fell in love with elegance of Japanese cuisine. During his travels, he crossed paths with a Japanese woman.. </p>
+                            <button type="button" class="btn btn-danger" onclick="location.href='@Url.Action("Home", "Story")'">Learn more</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card" style="width: 100%;">
+                        <img src="./Images/card2.jpg" class="card-img-top" alt="Card Image">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Menu</h5>
+                            <p class="card-text"> Discover our dishes where we are blending the simplicity and freshness of Japanese ingredients with the rich, seasonal flavors of Swedish cuisine.</p>
+                            <button type="button" class="btn btn-danger">See our menu</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card" style="width: 100%;">
+                        <img src="./Images/card3.jpg" class="card-img-top" alt="Card Image">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Book a table</h5>
+                            <p class="card-text">Do not miss our unique dining experience that marries the artistry of sushi and ramen with Nordic influences like pickled herring and lingonberries.</p>
+                            <button type="button" class="btn btn-danger" onclick="location.href='@Url.Action("CreateBooking", "Booking")'">Book a table</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+</section>
+</main>

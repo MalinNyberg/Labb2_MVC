@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Momoko</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Home.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Booking.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Menu.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Story.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Account.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Labb2_MVC.styles.css" asp-append-version="true" />
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Tokyo+Zoo&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-light bg-light shadow-sm">
+            <div class="container-fluid">
+                <a class="navbar-brand fw-bold fs-2 text-danger" asp-area="" asp-controller="Home" asp-action="Index">Momoko</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex">
+                    <ul class="navbar-nav flex-grow-1 justify-content-center fw-normal fs-4">
+                        @{
+                            var userRole = Context.Session.GetString("UserRole");  // Hämta sessionens roll
+                        }
+
+                        @* Om användaren inte är admin, visa vanliga användarnavigationslänkar *@
+                        @if (userRole != "Admin")
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Menu" asp-action="Menu">Menu</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Story" asp-action="Story">Our Story</a>
+                            </li>
+                        }
+
+                        @* Om användaren är admin, visa admin-specifika länkar *@
+                        @if (userRole == "Admin")
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Admin" asp-action="Index">Admin</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Booking" asp-action="ManageBookings">Bookings</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Admin" asp-action="Tables">Tables</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Menu" asp-action="ManageMenu">Menu</a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    @* Visa Logga in eller Logga ut-knapp beroende på användarens session *@
+                    @if (userRole == "Admin")
+                    {
+                        <form asp-action="Logout" asp-controller="Account" method="post">
+                            <button type="submit" class="btn btn-danger text-light">Log Out</button>
+                        </form>
+                    }
+                    else
+                    {
+                        <form asp-action="Login" asp-controller="Account" method="get">
+                            <button type="submit" class="btn btn-danger text-light">Log In</button>
+                        </form>
+                    }
+                </div>
+
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="footer bg-light text-muted">
+        <div class="container text-center">
+            <p>&copy; 2024 - Labb2_MVC - <a class="text-danger" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a></p>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
