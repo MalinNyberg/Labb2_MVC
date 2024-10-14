@@ -24,3 +24,10 @@ body {
 .nav-item {
     text-decoration: none;
 }
+
+footer {
+    position: sticky;
+    bottom: 0;
+}
+
+    
